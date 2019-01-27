@@ -20,7 +20,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            isCollapsed: true,
+            isCollapsed: false,
             sectionDisplay: "none"
          };
     }
@@ -59,19 +59,18 @@ class App extends Component {
                     <p>WEB DEVELOPER</p>
                 </div>
                 <Navbar className="navBar" pose={this.state.isCollapsed ? "closed" : "open"}>
-                    {/* <img src={navbarCollapse} /> */}
-                        <div className="navHeaders">
-                            <div>V</div>
-                            <button className="navTitle aboutBtn" onClick={() => this.toggleNavbar("about")}>
+                        {/* <div className="navHeaders"> */}
+                            <div className="navBtn">V</div>
+                            <button className="navBtn aboutBtn" onClick={() => this.toggleNavbar("about")}>
                                 {/* {this.displayTitle("about")} */}
                                 about
                             </button>
-                            <button className="navTitle projectsBtn" onClick={() => this.toggleNavbar("projects")}>
+                            <button className="navBtn projectsBtn" onClick={() => this.toggleNavbar("projects")}>
                                 {/* {this.displayTitle("projects")} */}
                                 projects
                             </button>
-                            <div>X</div>
-                        </div>
+                            <div className="navBtn">X</div>
+                        {/* </div> */}
 
 
                         <div className="navContent"  style={{ display: (this.state.sectionDisplay === "none" ? "none" : "inline-block")}}>
@@ -87,8 +86,8 @@ class App extends Component {
 
 
 
+            </Navbar>
 
-                </Navbar>
                 
             </StyledApp>
         );
@@ -131,51 +130,46 @@ const StyledApp = styled.div`
     .navBar {
         background: url(${navbar});
         background-repeat: no-repeat;
-
+        // background-color: yellow;
         background-size: 100%;
         display: block;
         width: 100vw;
         // height: 100vh;
         position: absolute;
         bottom: 0px; 
-    }
 
-    .navHeaders {
         display: flex;
         justify-content: space-around;
-        padding-top: 70px;
-        letter-spacing: .1rem;
-        color: #535353;
-         padding-bottom: -15px;
+    
     }
-    .navTitle {
-        // background-color: purple;
-        font-size: 24pt;
-        width: 150px;
-        border-radius: 2px;
-        color: #555658;
+    .navBtn {
+        background-color: purple;
+        display: inline-block;
+        width: 10%;
+        font-size: 2vw;
+        height: 30px;
+        margin-top: 10%;
+        padding-top: 5px;
+    }
 
-        font-family: ${props => props.theme.mainFont};
-        padding: 10px 0px;
-        
-        //padding-top: 10px;
-    }
     .aboutBtn {
-        background-color: blue;
+        // background-color: blue;
+        // width: 20%;
     }
     .projectsBtn {
-        background-color: orange;
+        // background-color: orange;
     }
     
     .navContent {
-        //background-color: yellow;
-        background: url(${bgContent});
-        // background-size: 100%;
+        //background: url(${bgContent});
+        background-color: yellow;
+
+        background-size: 100%;
         display: block;
         width: 100vw;
-        min-height: 75vh;
+        height: 100vw;
         position: absolute;
-
+        margin-top: 150px;
     }
     .section {
         margin-top: 0;
