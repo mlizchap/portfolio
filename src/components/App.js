@@ -19,12 +19,49 @@ class App extends Component {
             sectionDisplay: "none"
          };
     }
-    toggleNavbar = () => {
-        console.log("ccc")
-        this.setState({ 
-            isCollapsed: !this.state.isCollapsed,
-            sectionDisplay: "about"
-        })
+    toggleNavbar = (section) => {
+        console.log(section)
+        if (this.state.isCollapsed) {
+            this.setState({
+                sectionDisplay: section,
+                isCollapsed: false
+            })
+        } else if (!this.state.isCollapsed && this.state.sectionDisplay !== section) {
+            this.setState({
+                sectionDisplay: section,
+                isCollapsed: false
+            })        
+        } else {
+            this.setState({
+                isCollapsed: true,
+                sectionDisplay: "none",
+            })
+        }
+            
+        // else {
+        //     this.setState({
+        //         sectionDisplay: section,
+        //     })
+        // }
+       
+
+        
+        // if (this.state.sectionDisplay === "none") {
+        //     this.setState({ sectionDisplay})
+        // }
+        // this.setState({ 
+        //     isCollapsed: (section === this.state.sectionDisplay) ? !this.state.isCollapsed : false,
+        //     sectionDisplay: section 
+        // }, () => console.log(this.state.sectionDisplay))
+        
+    }
+    displayTitle = (title) => {
+        // console.log(this.state.isCollapsed)
+        if (!this.state.isCollapsed && this.state.sectionDisplay == title) {
+            return <p>arrow</p>
+        } else {
+            return <p>{title}</p>
+        }
     }
     render() {
         return (
@@ -33,10 +70,22 @@ class App extends Component {
                     <div>MARY CHAPMAN</div>
                 </div>
                 <Navbar className="navBar" pose={this.state.isCollapsed ? "closed" : "open"}>
-                    <p onClick={this.toggleNavbar}>about</p>
-                    <div className="about" style={{ display: (this.state.sectionDisplay === "about") ? "inline-block" : "none" }}>
-                        <p>fLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div className="navHeaders">
+                        <div className="navTitle" onClick={() => this.toggleNavbar("about")}>{this.displayTitle("about")}</div>
+                        <div className="navTitle" onClick={() => this.toggleNavbar("projects")}>{this.displayTitle("projects")}</div>
                     </div>
+                    
+                    <div className="section" style={{ display: (this.state.sectionDisplay === "about") ? "inline-block" : "none" }}>
+                        <p>ABOUT DETAIL</p>
+                    </div>
+
+                    <div className="section" style={{ display: (this.state.sectionDisplay === "projects") ? "inline-block" : "none" }}>
+                        <p>PROJECT DETAIL</p>
+                    </div>
+
+
+
+
                 </Navbar>
                 
             </StyledApp>
@@ -62,19 +111,24 @@ const StyledApp = styled.div`
     }
     .navBar {
         background: url(${navbar});
-        background-repeat: no-repeat;
         background-size: cover;
-        display: inline-block;
+        display: block;
         width: 100vw;
         height: 100vh;
         position: absolute;
         bottom: 0px; 
-        
-        p {
-            font-size: 64pt;
-            &:hover {
-                color: pink;
-            }
-        }
+    }
+
+    .navHeaders {
+        font-size: 16pt;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 100px;
+    }
+
+    .section {
+        margin-top: 0;
+        padding-top: 0;
+        padding: 40px;
     }
 `
