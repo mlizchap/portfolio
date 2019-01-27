@@ -7,8 +7,8 @@ const navbarCollapse = require('../static/navbarCollapse.png');
 const navbar = require('../static/navbarExpand.png');
 
 const Navbar = posed.div({
-    closed: { height: 0 },
-    open: { height: "auto" }
+    closed: { height: '20%' },
+    open: { height: '80%' }
   });
 
 class App extends Component {
@@ -25,11 +25,11 @@ class App extends Component {
     render() {
         return (
             <StyledApp>
-                {/* <Navbar className="navBar" pose={this.state.isCollapsed ? "open" : "closed"}> */}
-                <div className="navBar">
+                <Navbar className="navBar" pose={this.state.isCollapsed ? "closed" : "open"}>
+                {/* <div className="navBar"> */}
                     <p onClick={this.toggleNavbar}>about</p>
-                </div>
-                {/* </Navbar> */}
+                {/* </div> */}
+                </Navbar>
                 
             </StyledApp>
         );
@@ -54,7 +54,7 @@ const StyledApp = styled.div`
         display: inline-block;
         width: 100vw;
         
-        height: 30vh;
+        height: 90vh;
         position: absolute;
         bottom: 0px;    
     }
