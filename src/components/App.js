@@ -119,7 +119,7 @@ const StyledApp = styled.div`
         }
     }
     .navBar {
-        background: url(${bgNavbar});
+        background: url(${navbar});
         background-repeat: no-repeat;
 
         background-size: 100%;
@@ -152,7 +152,7 @@ const StyledApp = styled.div`
         background-size: 100%;
         display: block;
         width: 100vw;
-        height: 100vh;
+        height: 70vh;
         position: absolute;
 
     }
