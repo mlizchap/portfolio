@@ -2,6 +2,7 @@ import React, {Component}  from 'react';
 import styled from 'styled-components';
 import posed from "react-pose";
 import About from './About';
+import Projects from './Projects';
 
 const Background = require('../static/mainBackground.jpg');
 const bgOpac = require('../static/bg_opac.png');
@@ -21,7 +22,7 @@ class App extends Component {
         super(props);
         this.state = { 
             isCollapsed: false,
-            sectionDisplay: "none"
+            sectionDisplay: "projects"
          };
     }
     toggleNavbar = (section) => {
@@ -56,10 +57,10 @@ class App extends Component {
             <StyledApp>
                 <div className="title">
                     <h2>MARY CHAPMAN</h2>
-                    <p>WEB DEVELOPER</p>
+                    {/* <p>WEB DEVELOPER</p> */}
                 </div>
                 <Navbar className="navBar" pose={this.state.isCollapsed ? "closed" : "open"}>
-                        {/* <div className="navHeaders"> */}
+                        <div className="navHeaders">
                             <div className="navBtn">V</div>
                             <button className="navBtn aboutBtn" onClick={() => this.toggleNavbar("about")}>
                                 {/* {this.displayTitle("about")} */}
@@ -70,17 +71,17 @@ class App extends Component {
                                 projects
                             </button>
                             <div className="navBtn">X</div>
-                        {/* </div> */}
+                        </div>
 
 
-                        <div className="navContent"  style={{ display: (this.state.sectionDisplay === "none" ? "none" : "inline-block")}}>
-                            <div className="section" style={{ display: (this.state.sectionDisplay === "about") ? "inline-block" : "none" }}>
+                        <div className="navContent"  style={{ display: (this.state.sectionDisplay === "none" ? "none" : "block")}}>
+                            <div className="section" style={{ display: (this.state.sectionDisplay === "about") ? "block" : "none" }}>
                                 {/* <p>ABOUT DETAIL</p> */}
                                 <About />
                             </div>
 
-                            <div className="section" style={{ display: (this.state.sectionDisplay === "projects") ? "inline-block" : "none" }}>
-                                <p>PROJECT DETAIL</p>
+                            <div className="section" style={{ display: (this.state.sectionDisplay === "projects") ? "block" : "none" }}>
+                                <Projects />
                             </div>
                         </div>
 
@@ -97,16 +98,11 @@ class App extends Component {
 export default App;
 
 const StyledApp = styled.div`
-    background: url(${Background});
-    background-repeat: no-repeat;
+    background: url(${bgMain});
+    width: 100%;
+    height: 100%
     background-size: cover;
-    background-opacity: .5;
-    display: inline-block;
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    font-family: url('./static/dirtyBrush.ttf') format('ttf');
+    position: absolute;
     .title {
         text-align: center;
         // text-shadow: 1px 1px #414141;
@@ -114,69 +110,58 @@ const StyledApp = styled.div`
         padding-top: 8%;
         letter-spacing: .7rem;
         h2 {
-            // background-color: blue;
             font-size: 10vw;
             margin: 0;
         }
-        p {
-            // background-color: orange;
-            margin-top: -20px;
-            font-size: 26pt;
-            letter-spacing: .9rem;
-            // background-color: yellow;
-
-        }
     }
+    .navHeaders {
+        // background-color: orange;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 8%;
+        // align-content: flex-end;
+    }
+    .navBtn {
+        background: none;
+        border: none;
+        display: inline-block;
+        font-size: 42pt;
+        height: 20px;
+        border-radius: 3px;
+        color: #444647;
+    }
+
     .navBar {
         background: url(${navbar});
         background-repeat: no-repeat;
-        // background-color: yellow;
         background-size: 100%;
         display: block;
         width: 100vw;
-        // height: 100vh;
         position: absolute;
         bottom: 0px; 
 
-        display: flex;
+        // display: flex;
         justify-content: space-around;
-    
     }
-    .navBtn {
-        background-color: purple;
-        display: inline-block;
-        width: 10%;
-        font-size: 2vw;
-        height: 30px;
-        margin-top: 10%;
-        padding-top: 5px;
-    }
-
-    .aboutBtn {
-        // background-color: blue;
-        // width: 20%;
-    }
-    .projectsBtn {
-        // background-color: orange;
-    }
-    
     .navContent {
-        //background: url(${bgContent});
-        background-color: yellow;
-
+        background: url(${bgContent});
+        background-repeat: repeat;
         background-size: 100%;
         display: block;
-        width: 100vw;
-        height: 100vw;
-        position: absolute;
-        margin-top: 150px;
+        min-height: 100vh;
+        // min-width: 100vw;
+        //
+        //display: flex;
+        //align-items: flex-end;
+        // margin-top: 150px;
     }
     .section {
-        margin-top: 0;
+        margin-top: 50px;
         padding-top: 0;
         padding: 40px;
     }
-    p {
-        margin: 0;
-    }
+    // p {
+    //     margin: 0;
+    // }
 `
