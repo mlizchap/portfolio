@@ -43,14 +43,14 @@ class App extends Component {
             })
         }        
     }
-    displayTitle = (title) => {
-        // console.log(this.state.isCollapsed)
-        if (!this.state.isCollapsed && this.state.sectionDisplay == title) {
-            return <p>arrow</p>
-        } else {
-            return <p>{title}</p>
-        }
-    }
+    // displayTitle = (title) => {
+    //     // console.log(this.state.isCollapsed)
+    //     if (!this.state.isCollapsed && this.state.sectionDisplay == title) {
+    //         return <p>arrow</p>
+    //     } else {
+    //         return <p>{title}</p>
+    //     }
+    // }
     render() {
         return (
             <StyledApp>
@@ -61,8 +61,16 @@ class App extends Component {
                 <Navbar className="navBar" pose={this.state.isCollapsed ? "closed" : "open"}>
                     {/* <img src={navbarCollapse} /> */}
                         <div className="navHeaders">
-                            <div className="navTitle" onClick={() => this.toggleNavbar("about")}>{this.displayTitle("about")}</div>
-                            <div className="navTitle" onClick={() => this.toggleNavbar("projects")}>{this.displayTitle("projects")}</div>
+                            <div>V</div>
+                            <button className="navTitle aboutBtn" onClick={() => this.toggleNavbar("about")}>
+                                {/* {this.displayTitle("about")} */}
+                                about
+                            </button>
+                            <button className="navTitle projectsBtn" onClick={() => this.toggleNavbar("projects")}>
+                                {/* {this.displayTitle("projects")} */}
+                                projects
+                            </button>
+                            <div>X</div>
                         </div>
 
 
@@ -133,28 +141,39 @@ const StyledApp = styled.div`
     }
 
     .navHeaders {
-        font-size: 48pt;
         display: flex;
         justify-content: space-around;
-        padding-top: 8%;
-        letter-spacing: .3rem;
+        padding-top: 70px;
+        letter-spacing: .1rem;
         color: #535353;
-        margin: 0;
-        // margin-top: 7%;
-        // background-color: orange;
+         padding-bottom: -15px;
     }
-    .navHeaders > div:hover {
-        color: pink;
-        cursor: pointer;
+    .navTitle {
+        // background-color: purple;
+        font-size: 24pt;
+        width: 150px;
+        border-radius: 2px;
+        color: #555658;
+
+        font-family: ${props => props.theme.mainFont};
+        padding: 10px 0px;
         
+        //padding-top: 10px;
     }
+    .aboutBtn {
+        background-color: blue;
+    }
+    .projectsBtn {
+        background-color: orange;
+    }
+    
     .navContent {
         //background-color: yellow;
         background: url(${bgContent});
-        background-size: 100%;
+        // background-size: 100%;
         display: block;
         width: 100vw;
-        // height: 70vh;
+        min-height: 75vh;
         position: absolute;
 
     }
