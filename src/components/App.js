@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import styled from 'styled-components';
 import posed from "react-pose";
+import About from './About';
 
 const Background = require('../static/mainBackground.jpg');
 const bgOpac = require('../static/bg_opac.png');
@@ -67,7 +68,8 @@ class App extends Component {
 
                         <div className="navContent"  style={{ display: (this.state.sectionDisplay === "none" ? "none" : "inline-block")}}>
                             <div className="section" style={{ display: (this.state.sectionDisplay === "about") ? "inline-block" : "none" }}>
-                                <p>ABOUT DETAIL</p>
+                                {/* <p>ABOUT DETAIL</p> */}
+                                <About />
                             </div>
 
                             <div className="section" style={{ display: (this.state.sectionDisplay === "projects") ? "inline-block" : "none" }}>
@@ -152,7 +154,7 @@ const StyledApp = styled.div`
         background-size: 100%;
         display: block;
         width: 100vw;
-        height: 70vh;
+        // height: 70vh;
         position: absolute;
 
     }
