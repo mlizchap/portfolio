@@ -78,8 +78,10 @@ const StyledProject = styled.div`
     }
     .src {
         background-color: ${props => props.theme.lightblue};
+        letter-spacing: .1rem;
     }
     .site {
         background-color: ${props => props.theme.lightblue};
+        letter-spacing: .1rem;
     }
 `

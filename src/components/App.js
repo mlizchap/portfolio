@@ -12,6 +12,8 @@ const bgMain = require('../static/bg_main.png');
 const bgContent = require('../static/bg_content.png');
 const bgNavbar = require('../static/bg_navbar.png');
 const arrow = require('../static/arrow.png');
+const titleBanner = require('../static/titleBanner.png');
+
 
 const Navbar = posed.div({
     closed: { height: '28%' },
@@ -58,7 +60,7 @@ class App extends Component {
             <StyledApp>
                 <div className="title">
                     <h2>MARY CHAPMAN</h2>
-                    <p>WEB DEVELOPER</p>
+                    <img src={titleBanner} width="45%"/>
                 </div>
                 <Navbar className="navBar" pose={this.state.isCollapsed ? "closed" : "open"}>
                         <div className="navHeaders">
@@ -68,15 +70,15 @@ class App extends Component {
                                 src={arrow} 
                                 height="65px" 
                                 style={{ visibility: (this.state.isCollapsed) ? "hidden" : "visible"}}
-                                onClick={() => this.setState({ isCollapsed: !this.state.isCollapsed })}
+                                onClick={() => this.setState({ isCollapsed: !this.state.isCollapsed, sectionDisplay: "none" })}
                             />
-                            <button className={`navBtn projectsBtn ${(this.state.sectionDisplay==="about") ? `aboutSelected` : null }`} onClick={() => this.toggleNavbar("about")}>
+                            <button className={`navBtn aboutBtn ${(this.state.sectionDisplay==="about") ? `aboutSelected` : null }`} onClick={() => this.toggleNavbar("about")}>
                                 about
                             </button>
                             <button className={`navBtn projectsBtn ${(this.state.sectionDisplay==="projects") ? `projectsSelected` : null }`} onClick={() => this.toggleNavbar("projects")}>
                                 projects
                             </button>
-                            <div className="navBtn">X</div>
+                            <div className="navBtn"></div>
                         </div>
 
 
@@ -117,20 +119,22 @@ const StyledApp = styled.div`
         padding-top: 12%;
         letter-spacing: .7rem;
         h2 {
-            font-size: 13vw;
+            font-size: 11vw;
             margin: 0;
         }
         p {
             // background-color: orange;
+            font-family: ${props => props.theme.mainFont};
             font-size: 2vw;
-            margin: 0;
+            margin: 10p;
+            color: blue;
         }
     }
     .navHeaders {
         // background-color: orange;
         display: flex;
         justify-content: space-around;
-        width: 100%;
+        // width: 100%;
         margin-top: 8%;
         padding: 10px;
         // align-content: flex-end;
@@ -143,8 +147,20 @@ const StyledApp = styled.div`
         height: 20px;
         border-radius: 3px;
         color: #444647;
+        // &:hover {
+        //     cursor: pointer;
+        //     filter: brightness(120%);
+        // }
     }
 
+    .projectsBtn:hover {
+        cursor: pointer;
+        color: ${props => props.theme.lightblue};
+    }
+    .aboutBtn:hover {
+        cursor: pointer;
+        color: ${props => props.theme.lightpurple};
+    }
     .navBar {
         background: url(${navbar});
         background-repeat: no-repeat;
@@ -170,9 +186,9 @@ const StyledApp = styled.div`
         // margin-top: 150px;
     }
     .section {
-        margin-top: 50px;
-        padding-top: 0;
         padding: 40px;
+        padding-top: 10px;
+
     }
     // p {
     //     margin: 0;
