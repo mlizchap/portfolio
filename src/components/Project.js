@@ -16,8 +16,8 @@ class Project extends Component {
                 </div>
                 <p className="description">{this.props.projectData.description}</p>
                 <div className="linkBtns">
-                <a className="linkBtn" href={`${this.props.projectData.sourceLink}`}>source</a>
-                <a className="linkBtn" href={`${this.props.projectData.siteLink}`}>site</a>
+                <a className="linkBtn src" href={`${this.props.projectData.sourceLink}`}>source</a>
+                <a className="linkBtn site" href={`${this.props.projectData.siteLink}`}>site</a>
                 </div>
 
             </StyledProject>
@@ -67,12 +67,19 @@ const StyledProject = styled.div`
     }
     .linkBtn {
         text-decoration: none;
-        background-color: ${props => props.theme.lightblue};
         padding: 7px;
         color: ${props => props.theme.darkgray};
         border-radius: 3px;
         font-family: ${props => props.theme.mainFont};
         box-shadow: 1px 1px 4px #acacac;
         width: 70px;
+        font-size: 10pt;
+        color: ${props => props.theme.light};
+    }
+    .src {
+        background-color: ${props => props.theme.lightblue};
+    }
+    .site {
+        background-color: ${props => props.theme.lightblue};
     }
 `

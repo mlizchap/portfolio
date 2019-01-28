@@ -1,7 +1,7 @@
 export const theme = {
-    mainFont: 'Arial',
+    mainFont: 'Raleway', 
     darkgray: '#444647',
     light: '#f5f5f5',
-    lightblue: '#a5d4ff',
-    lightpurple: '#cabbef'
+    lightblue: '#61a7e8',
+    lightpurple: '#837bed'
 }

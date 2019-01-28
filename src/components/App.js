@@ -11,6 +11,7 @@ const navbar = require('../static/navbarExpand.png');
 const bgMain = require('../static/bg_main.png');
 const bgContent = require('../static/bg_content.png');
 const bgNavbar = require('../static/bg_navbar.png');
+const arrow = require('../static/arrow.png');
 
 const Navbar = posed.div({
     closed: { height: '28%' },
@@ -21,8 +22,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            isCollapsed: false,
-            sectionDisplay: "projects"
+            isCollapsed: true,
+            sectionDisplay: "none"
          };
     }
     toggleNavbar = (section) => {
@@ -57,17 +58,22 @@ class App extends Component {
             <StyledApp>
                 <div className="title">
                     <h2>MARY CHAPMAN</h2>
-                    {/* <p>WEB DEVELOPER</p> */}
+                    <p>WEB DEVELOPER</p>
                 </div>
                 <Navbar className="navBar" pose={this.state.isCollapsed ? "closed" : "open"}>
                         <div className="navHeaders">
-                            <div className="navBtn">V</div>
-                            <button className="navBtn aboutBtn" onClick={() => this.toggleNavbar("about")}>
-                                {/* {this.displayTitle("about")} */}
+                            {/* <div className="navBtn"></div> */}
+                            <img 
+                                className="arrow"
+                                src={arrow} 
+                                height="65px" 
+                                style={{ visibility: (this.state.isCollapsed) ? "hidden" : "visible"}}
+                                onClick={() => this.setState({ isCollapsed: !this.state.isCollapsed })}
+                            />
+                            <button className={`navBtn projectsBtn ${(this.state.sectionDisplay==="about") ? `aboutSelected` : null }`} onClick={() => this.toggleNavbar("about")}>
                                 about
                             </button>
-                            <button className="navBtn projectsBtn" onClick={() => this.toggleNavbar("projects")}>
-                                {/* {this.displayTitle("projects")} */}
+                            <button className={`navBtn projectsBtn ${(this.state.sectionDisplay==="projects") ? `projectsSelected` : null }`} onClick={() => this.toggleNavbar("projects")}>
                                 projects
                             </button>
                             <div className="navBtn">X</div>
@@ -105,12 +111,18 @@ const StyledApp = styled.div`
     position: absolute;
     .title {
         text-align: center;
-        // text-shadow: 1px 1px #414141;
-        color: rgba(252, 252, 252, .8);
-        padding-top: 8%;
+        text-shadow: 1px 1px 2px #2c2d2d;
+        color: white;
+        opacity: .75;
+        padding-top: 12%;
         letter-spacing: .7rem;
         h2 {
-            font-size: 10vw;
+            font-size: 13vw;
+            margin: 0;
+        }
+        p {
+            // background-color: orange;
+            font-size: 2vw;
             margin: 0;
         }
     }
@@ -120,6 +132,7 @@ const StyledApp = styled.div`
         justify-content: space-around;
         width: 100%;
         margin-top: 8%;
+        padding: 10px;
         // align-content: flex-end;
     }
     .navBtn {
@@ -149,7 +162,7 @@ const StyledApp = styled.div`
         background-repeat: repeat;
         background-size: 100%;
         display: block;
-        min-height: 100vh;
+        min-height: 75vh;
         // min-width: 100vw;
         //
         //display: flex;
@@ -164,4 +177,16 @@ const StyledApp = styled.div`
     // p {
     //     margin: 0;
     // }
+    .projectsSelected {
+        color: ${props => props.theme.lightblue};
+        text-decoration: underline;
+    }
+    .aboutSelected {
+        color: ${props => props.theme.lightpurple};
+        text-decoration: underline;
+    }
+    .arrow:hover{
+        filter: brightness(120%);
+        cursor: pointer;
+    }
 `

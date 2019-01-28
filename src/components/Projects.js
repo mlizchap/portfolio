@@ -4,6 +4,8 @@ import Project from './Project';
 
 const filterMobile = require('../static/proj_filter_mobile.png');
 const filterDesktop = require('../static/proj_filter_desktop.png');
+const flexboxMobile = require('../static/proj_flexbox_mobile.png');
+const flexboxDesktop = require('../static/proj_flexbox_desktop.png');
 
 const projectData = [
     {        
@@ -13,6 +15,14 @@ const projectData = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         sourceLink: 'https://github.com/mlizchap/photo-filters',
         siteLink: "https://mlizchap.github.io/photo-filters/"
+    },
+    {        
+        title: 'flexbox-guide',
+        mobileImage: flexboxMobile,
+        desktopImage: flexboxDesktop,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        sourceLink: 'https://github.com/mlizchap/flexbox-react',
+        siteLink: "https://mlizchap.github.io/flexbox-react/"
     }
 ]
 
